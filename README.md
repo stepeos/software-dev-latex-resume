@@ -1,6 +1,6 @@
 # 🧑‍💻 software-dev-latex-resume
 
-A clean, modern LaTeX class for creating software development resumes. It uses thoughtful formatting, optional profile image support, icons, and structured commands to generate a PDF resume with minimal effort.
+A clean, modern LaTeX class for creating software development resumes. It uses plain formatting, profile image support, icons, and structured commands to generate a PDF resume with minimal effort.
 
 This template is built as a `.cls` (LaTeX class) file to keep your resume logic separate from the design. Designed for tech professionals who value clarity and customization.
 
