@@ -41,6 +41,6 @@ software-dev-latex-resume/
   email.png
   telephone.png
   placeholder.png
-  briefcase.png, mortarboard.png, etc.
+  briefcase.png, mortarboard.png, etc. (you can download them from https://uxwing.com)
 3. Edit main.tex to customize your resume content.
 4. Compile your resume (requires XeLaTeX or LuaLaTeX for fontspec)
