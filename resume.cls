@@ -4,7 +4,7 @@
 \LoadClass[a4paper,10pt]{article}
 
 % Basic packages
-\RequirePackage[margin=1in]{geometry}
+\RequirePackage[margin=1.5cm]{geometry}
 \RequirePackage{titlesec}
 \RequirePackage{enumitem}
 \RequirePackage{hyperref}
@@ -20,6 +20,9 @@
 \RequirePackage{multicol}
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
+% \RequirePackage[ngerman]{babel}
+\RequirePackage[american]{babel}
+
 
 
 
@@ -55,13 +58,12 @@
 \newcommand{\location}{ChocolateVille}
 \newcommand{\linkedin}{}
 \newcommand{\github}{myaccountname}
-\newcommand{\languages}{}
-\newcommand{\profilepic}{headshot.png}
+\newcommand{\profilepic}{} % Optional image path
 \newcommand{\iconsize}{12pt} % Optional image path
 % === Header Command ===
 \usepackage{graphicx}
 \newcommand{\makeheader}{
-  \vspace*{-2.5cm}
+  % \vspace*{-2.5cm}
   \section*{\texttt{\textcolor{commentcolor}{/* Brief */}} \hfill \includegraphics[height=\iconsize]{icons/briefcase.png}}
   \begin{center}
     \ifx\profilepic\empty
@@ -82,8 +84,7 @@
           \ifthenelse{\equal{\github}{}}{}{$\cdot$ \includegraphics[width=\iconsize]{icons/github.png} \href{https://github.com/\github}{\github}}
           \ifthenelse{\equal{\linkedin}{}}{\\}{$\cdot$ {\includegraphics[width=\iconsize]{icons/linkedin.png} \href{\linkedin}{linkedIn}\\}}
         }
-        \ifthenelse{\equal{\languages}{}}{}{\includegraphics[width=\iconsize]{icons/language.png} \languages}
-        
+        \includegraphics[width=\iconsize]{icons/language.png} German: native, English: C2, Spanish: B2+
       \end{minipage}
     \fi
   \end{center}
@@ -93,32 +94,54 @@
 \newcommand{\makeprogramming}{\section*{\texttt{\textcolor{commentcolor}{/* Programming \& Markdown Languages */}} \hfill \includegraphics[height=\iconsize]{icons/laptop.png}}}
 \newcommand{\makeconcecpts}{\section*{\texttt{\textcolor{commentcolor}{/* Relevant Concepts and Tools */}} \hfill \includegraphics[height=\iconsize]{icons/like.png}}}
 \newcommand{\makevolunteer}{\section*{\texttt{\textcolor{commentcolor}{/* Volunteer Experience */}} \hfill \includegraphics[height=\iconsize]{icons/certificate.png}}}
+\newcommand{\makeprojects}{\section*{\texttt{\textcolor{commentcolor}{/* Projects */}} \hfill \includegraphics[height=\iconsize]{icons/certificate.png}}}
 
 
 % Education command
 \newcommand{\educationentry}[6]{
+\begin{samepage}
   % \ifthenelse{\equal{#6}{university}}{
-  %   \includegraphics[height=\iconsize]{icons/mortarboard.png}
+  %   \includegraphics[height=\iconsize]{icons/mortarboard.png} \hspace{4pt}
   % }{
-  %   \includegraphics[height=\iconsize]{icons/certificate.png}
+  %   \includegraphics[height=\iconsize]{icons/certificate.png} \hspace{4pt}
   % }
-  \hspace{4pt}
   \textbf{#1} \hfill \light{#2}\\
-  #3 \hfill \light{#4}
+  \lightb{#3} \hfill \light{#4}
   \vspace*{-0.15cm}
   \ifthenelse{\isempty{#5}}{}{\begin{itemize}[noitemsep,leftmargin=*]
     #5
-  \end{itemize}}
+  \end{itemize}
+  % creates a phantom empty 0pt height line to fix samepage bug where multiple samepage in sequence merge
+  {\phantom{.}} \vspace{-\baselineskip} }
+\end{samepage}
+
 }
 
 
 % Experience command
 \newcommand{\experienceentry}[5]{
-  % \includegraphics[height=\iconsize]{icons/building.png}
+\begin{samepage}
   \textbf{#1} \\
   \lightb{\textit{#2}}, #3 \hfill  \light{#4}
   \vspace*{-0.15cm}
-  \ifthenelse{\isempty{#3}}{}{\begin{itemize}[noitemsep,leftmargin=*]
-    #5
-  \end{itemize}}
+  \ifthenelse{\isempty{#5}}{\newline}{\begin{itemize}[noitemsep,leftmargin=*]
+    #5 
+  \end{itemize}
+  % creates a phantom empty 0pt height line to fix samepage bug where multiple samepage in sequence merge
+  {\phantom{.}} \vspace{-\baselineskip}}
+\end{samepage}
+}
+
+
+% Experience command
+\newcommand{\projectentry}[3]{
+\begin{samepage}
+  \textbf{#1} \\
+  \textit{#2}
+  \vspace*{-0.15cm}
+  \ifthenelse{\isempty{#3}}{\newline}{\begin{itemize}[noitemsep,leftmargin=*]
+    #3
+  \end{itemize}
+  {\phantom{.}} \vspace{-\baselineskip}}
+\end{samepage}
 }
